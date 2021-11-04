@@ -1,6 +1,6 @@
 # Exercise 2a: Hello World
 
-## Goals: 
+## Goals
 
 - Use the `fmt` package
 - Practice string formatting

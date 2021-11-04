@@ -1,15 +1,23 @@
 package main
 
-// import "fmt"
+import "fmt"
 
-// func printAge(age1, age2 int) (ageOfSally, ageOfBob int) {
-// 	ageOfSally = age1
-// 	ageOfBob = age2
-// 	return
-// }
+func printAge(age, year int) (ageOfBob int, ageOfSally int) {
+	// do something with age/year
+	// declare return vars
+	ageOfBob = 29
+	ageOfSally = 13
+	return
+}
+
+func printAges(ages ...int) { // spread, however many args are passed in, print them
+	for _, age := range ages {
+		fmt.Println(age)
+	}
+}
 
 func main() {
-	// 	x, y := printAge(10, 21)
-	// 	fmt.Println(x)
-	// 	fmt.Println(y)
+	r1, r2 := printAge(8, 2021)
+	fmt.Println(r1, r2)
+	printAges(100, 200, 300, 400)
 }

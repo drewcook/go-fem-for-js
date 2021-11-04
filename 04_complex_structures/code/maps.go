@@ -2,26 +2,61 @@
 
 package main
 
-// import "fmt"
+import "fmt"
 
-// func main() {
+func main() {
 
-// 	var userEmails map[int]string
+	var userEmails map[int]string = make(map[int]string)
 
-// 	userEmails[1] = "user1@gmail.com"
-// 	userEmails[2] = "user2@gmail.com"
+	userEmails[1] = "user1@gmail.com"
+	userEmails[2] = "user2@gmail.com"
 
-// 	fmt.Println(userEmails)
+	fmt.Println(userEmails)
+
+	var wallets map[string]string = make(map[string]string)
+
+	wallets["eth"] = "w90233209rfnafl29302n32k"
+	wallets["btc"] = "a322l30000akmm3o2opakaanxx0002n"
+
+	fmt.Println(wallets)
+
+	// shorthand
+	emails := map[int]string{
+		1: "alpha@test.com",
+		2: "beta@test.com",
+	}
+
+	fmt.Println(emails, len(emails))
+	emails[5] = "epsilon@test.com"
+	emails[1] = "Alpha@test.com"
+	fmt.Println(emails, len(emails))
+
+	// check if pair exists in map
+	firstEmail := emails[1]
+	fourthEmail, ok := emails[4] // use ok var to check if, fourthEmail will be empty string (default value)
+	fmt.Println(firstEmail, fourthEmail, ok) // if (!ok) handle error
+
+	// if (value, exists of collection; boolean condition) { execute}
+	if email, ok := emails[3]; ok {
+		fmt.Println("email exists:", email)
+	} else {
+		fmt.Println("email does not exist")
+	}
+
+	// deleting a key
+	delete(emails, 2)
+
+	fmt.Println(emails)
 
 // 	// ****************************
 
-// 	var userEmails map[int]string = make(map[int]string)
-// 	// userEmails := make(map[int]string)
+	// var userEmails map[int]string = make(map[int]string)
+	// // userEmails := make(map[int]string)
 
-// 	userEmails[1] = "user1@gmail.com"
-// 	userEmails[2] = "user2@gmail.com"
+	// userEmails[1] = "user1@gmail.com"
+	// userEmails[2] = "user2@gmail.com"
 
-// 	fmt.Println(userEmails)
+	// fmt.Println(userEmails)
 
 // 	// ****************************
 
@@ -105,4 +140,4 @@ package main
 // 		fmt.Printf("%s has an ID of %d.\n", v, k)
 // 	}
 // 	// ****************************
-// }
+}
