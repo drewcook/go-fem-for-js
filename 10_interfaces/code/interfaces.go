@@ -18,6 +18,10 @@ type Group struct {
 	spaceAvailable bool
 }
 
+type Describer interface {
+	describe() string
+}
+
 // These two structs have different implementations of the `describe()` method.
 
 func (u *User) describe() string {
@@ -31,6 +35,43 @@ func (g *Group) describe() string {
 }
 
 // Create a function that doesn't care what type you pass in as long as the type "satisfies the interface"
+func DoSomething(d Describer) string {
+	return d.describe()
+}
+
+type Rocker interface {
+	playLoudMusic() bool
+	likesMetal() bool
+}
+
+func (u *User) playLoudMusic() bool {
+	fmt.Println("I like to play loud music as a user.")
+	return true
+}
+
+func (u *User) likesMetal() bool {
+	fmt.Println("Metallica is awesome!")
+	return true
+}
+
+func (g* Group) playLoudMusic() bool {
+	fmt.Println("We don't play loud music as a group.")
+	return false
+}
+
+func (u *Group) likesMetal() bool {
+	fmt.Println("We like Chicago.")
+	return false
+}
+
+func RockOut(r Rocker) {
+	r.likesMetal()
+	r.playLoudMusic()
+}
+
+func DoAnything(any interface{}) {
+	fmt.Println("Anything goes:", any)
+}
 
 func main() {
 	u1 := User{ID: 1, FirstName: "Marilyn", LastName: "Monroe", Email: "marilyn.monroe@gmail.com"}
@@ -38,6 +79,17 @@ func main() {
 	g := Group{role: "admin", users: []User{u1, u2}, newestUser: u2, spaceAvailable: true}
 	describeUser := u1.describe()
 	describeGroup := g.describe()
+	userDescribedWithIFace := DoSomething(&u1)
+	groupDescribedWithIFace := DoSomething(&g)
+
 	fmt.Println(describeUser)
 	fmt.Println(describeGroup)
+	fmt.Println(userDescribedWithIFace)
+	fmt.Println(groupDescribedWithIFace)
+
+	RockOut(&u1)
+	RockOut(&g)
+
+	DoAnything("hello world")
+	DoAnything(100)
 }

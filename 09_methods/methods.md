@@ -12,9 +12,10 @@ type User struct {
   Email string
 }
 
+// function
 func describeUser(u User) string {
-	desc := fmt.Sprintf("Name: %s %s, Email: %s, ID: %d", u.firstName, u.lastName, u.email, u.ID)
-	return desc
+ desc := fmt.Sprintf("Name: %s %s, Email: %s, ID: %d", u.firstName, u.lastName, u.email, u.ID)
+ return desc
 }
 
 func main() {
@@ -32,9 +33,10 @@ This tells Go that when the `describe()` function receives (is called on) a stru
 We can then call the method a little differently:
 
 ```go
+// method
 func (u *User) describe() string {
-	desc := fmt.Sprintf("Name: %s %s, Email: %s, ID: %d", u.firstName, u.lastName, u.email, u.ID)
-	return desc
+ desc := fmt.Sprintf("Name: %s %s, Email: %s, ID: %d", u.firstName, u.lastName, u.email, u.ID)
+ return desc
 }
 
 func main() {
@@ -53,4 +55,5 @@ Note that methods DO NOT require the `&` operator to permanently modify the stru
 - Functions that control/modify state
 
 ## Exercise 9
+
 `09_methods/exercise_9a.md`
