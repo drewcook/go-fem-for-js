@@ -7,6 +7,7 @@ import (
 	"net/http"
 )
 
+// Page handlers, serve dummy html
 func homeHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "<h1>Home</h1><p>This is the home page.</p>")
 }
@@ -28,6 +29,7 @@ type TodosPageData struct {
 // setup some mock data to display
 var todos []Todo
 
+// serve up todo.html file
 func todosHandler(w http.ResponseWriter, r *http.Request) {
 	pageData := TodosPageData{
 		PageTitle: "Get Todos",
@@ -50,12 +52,14 @@ func addTodoHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		log.Print("Request parsing error:", err)
 	}
+	// add todo to list
 	todo := Todo{
 		Title: r.FormValue("title"),
 		Content: r.FormValue("content"),
 	}
 	todos = append(todos, todo)
 
+	// Log and redirect to /todos
 	log.Print(todos)
 	http.Redirect(w, r, "/todos", http.StatusSeeOther)
 }
