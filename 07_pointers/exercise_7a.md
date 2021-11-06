@@ -1,6 +1,6 @@
 ## Exercise 7A: Pointers
 
-## Goals 
+## Goals
 
 - Practice navigating between variables and pointers
 - Practice building and modifying structs
@@ -12,11 +12,11 @@
 
 ## Directions
 
-1. Define an instance of the User struct 
+1. Define an instance of the User struct
 
 2. Write a function called `updateEmail` that takes in a `*User` type
 
-3. Update the user's email to something new 
+3. Update the user's email to something new
 
 4. Call `updateEmail()` from `main()` and verify the updated email has persisted
 
@@ -26,8 +26,8 @@ package main
 import "fmt"
 
 type User struct {
-	ID                         int
-	FirstName, LastName, Email string
+ ID                         int
+ FirstName, LastName, Email string
 }
 
 // YOUR CODE HERE
